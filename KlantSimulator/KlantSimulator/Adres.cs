@@ -13,7 +13,7 @@ namespace KlantSimulator
             GemeenteNaam = gemeenteNaam;
             StraatNaam = straatNaam;
             HuisNr = huisNr;
-        }
+        } 
 
         public int Postcode { get; set; }
         public string GemeenteNaam { get; set; }
