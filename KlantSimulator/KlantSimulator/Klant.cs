@@ -15,10 +15,32 @@ namespace KlantSimulator
             Adres = adres;
         }
 
-        public int KlantNr { get; set; }
-        public string Voornaam { get; set; }
-        public string AchterNaam { get; set; }
-        public Adres Adres { get; set; }
+        public int KlantNr { get; set; } //nummer met bovengrens : 10 000 verschillende nodig met alles erop en eraan
+        
+        private string _voornaam;
+        public string Voornaam { //mag niet leeg zijn!
+            get { return _voornaam; }
+            set 
+            { 
+                if(value == null || string.IsNullOrEmpty(value) || value.Trim(' ') != value)
+                {
+                    throw new ArgumentException("Voornaam mag niet leeg zijn!");
+                }
+            } 
+        } 
+        
+        private string _achternaam;
+        public string AchterNaam { //mag niet leeg zijn!
+            get { return _achternaam; }
+            set
+            {
+                if (value == null || string.IsNullOrEmpty(value) || value.Trim(' ') != value)
+                {
+                    throw new ArgumentException("Achternaam mag niet leeg zijn!");
+                }
+            }
+        } 
+        public Adres Adres { get; set; } 
 
     }
 }
