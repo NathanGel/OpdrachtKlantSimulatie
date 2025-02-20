@@ -8,9 +8,9 @@ namespace KlantSimulator
 {
     public class Adres
     {
-        public Adres(int postcode, string gemeenteNaam, string straatNaam, int huisNr) {
-            Postcode = postcode;
+        public Adres(string gemeenteNaam ,int postcode, string straatNaam, int huisNr) {
             GemeenteNaam = gemeenteNaam;
+            Postcode = postcode;
             StraatNaam = straatNaam;
             HuisNr = huisNr;
         } 
@@ -24,7 +24,7 @@ namespace KlantSimulator
                 {
                     throw new ArgumentException($"Postcode {value} moet 4 cijfers bevatten!");
                 }
-                else value = _postcode;
+                _postcode = value;
             } 
         }
         public string GemeenteNaam { get; set; }
@@ -39,7 +39,7 @@ namespace KlantSimulator
                 {
                     throw new ArgumentException($"Huisnummer {value} moet tussen 1 en 1000 liggen!");
                 }
-                else value = _huisNr;
+                _huisNr = value;
             } 
         }
     }

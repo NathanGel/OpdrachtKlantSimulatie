@@ -22,10 +22,11 @@ namespace KlantSimulator
             get { return _voornaam; }
             set 
             { 
-                if(value == null || string.IsNullOrEmpty(value) || value.Trim(' ') != value)
+                if(value == null || string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException("Voornaam mag niet leeg zijn!");
                 }
+                _voornaam = value;
             } 
         } 
         
@@ -34,10 +35,11 @@ namespace KlantSimulator
             get { return _achternaam; }
             set
             {
-                if (value == null || string.IsNullOrEmpty(value) || value.Trim(' ') != value)
+                if (value == null || string.IsNullOrEmpty(value))
                 {
                     throw new ArgumentException("Achternaam mag niet leeg zijn!");
                 }
+                _achternaam = value;
             }
         } 
         public Adres Adres { get; set; } 

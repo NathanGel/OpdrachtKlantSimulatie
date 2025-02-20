@@ -13,15 +13,20 @@ namespace KlantSimulator
             HashSet<int> klantenNummers = new();
             Random rnd = new();
             try {
-                for (int i = 0; i < 100; i++) {
-                    int klantNr = rnd.Next(100000, 1000000);
-                    string voornaam = voornamen[rnd.Next(0, 10)];
-                    string achternaam = achternamen[rnd.Next(0, 10)];
-                    string straatnaam = straatnamen[rnd.Next(0, 10)];
-                    int postcode = postcodes[rnd.Next(0, 9)];
+                for (int i = 0; i < 10001; i++) {
+                    int klantNr;
+                    do {
+                        klantNr = rnd.Next(1, 100000);
+                    } while (klantenNummers.Contains(klantNr));
+
+                    klantenNummers.Add(klantNr);
+                    string voornaam = voornamen[rnd.Next(0, voornamen.Count)];
+                    string achternaam = achternamen[rnd.Next(0, achternamen.Count)];
+                    string straatnaam = straatnamen[rnd.Next(0, straatnamen.Count)];
+                    int postcode = postcodes[rnd.Next(0, postcodes.Count)];
                     string gemeente = gemeenten[postcode];
-                    int huisnummer = rnd.Next(1, 101);
-                    Klant klant = new(klantNr, voornaam, achternaam, new Adres(postcode, gemeente, straatnaam, huisnummer));
+                    int huisnummer = rnd.Next(1, 1001);
+                    Klant klant = new(klantNr, voornaam, achternaam, new Adres(gemeente, postcode, straatnaam, huisnummer));
                     klanten.Add(klant);
                 }
             }catch(Exception e) {
